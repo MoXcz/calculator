@@ -72,12 +72,18 @@ clear.addEventListener("click", () => {
   clearDisplayContents();
 });
 
+let prevEvent;
 function operatorEvent(target) {
   if (firstNumber != 0)
-    display.textContent = operate(target.textContent, firstNumber, display.textContent);
+    display.textContent = operate(
+      prevEvent.textContent,
+      firstNumber,
+      display.textContent,
+    );
   firstNumber = display.textContent;
   operator = target.textContent;
   target.style.opacity = opac;
+  prevEvent = target;
 }
 
 const addition = document.querySelector(".addition");
