@@ -116,3 +116,12 @@ const del = document.querySelector(".delete");
 del.addEventListener("click", () => {
   display.textContent = display.textContent.slice(0, -1);
 });
+
+const pi = document.querySelector(".pi");
+pi.addEventListener("click", () => {
+  display.textContent = Math.PI;
+});
+const dot = document.querySelector(".dot");
+dot.addEventListener("click", () => {
+  if (!display.textContent.includes(".")) display.textContent += ".";
+});
