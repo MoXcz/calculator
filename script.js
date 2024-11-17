@@ -19,7 +19,7 @@ function mod(a, b) {
 }
 
 let firstNumber = 0,
-  operator,
+  operator = 0,
   secondNumber = 0;
 const opac = 0.5;
 
@@ -32,6 +32,7 @@ function operate(operator, firstNumber, secondNumber) {
     case "*":
       return (multipy(firstNumber, secondNumber) * 100).toFixed() / 100;
     case "/":
+      return (divide(firstNumber, secondNumber) * 100).toFixed() / 100;
     case "%":
       return (mod(firstNumber, secondNumber) * 100).toFixed() / 100;
   }
@@ -104,6 +105,7 @@ remainder.addEventListener("click", () => operatorEvent(remainder));
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
+  if (operator == 0) return;
   secondNumber = display.textContent;
   if (!isNaN(+firstNumber + +secondNumber))
     display.textContent = operate(operator, firstNumber, secondNumber);
