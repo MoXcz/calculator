@@ -40,7 +40,7 @@ buttons.addEventListener("click", (event) => {
   if (display.textContent == "0" && !hasNumber.test(target.textContent)) return;
   else if (display.textContent == "0" && hasNumber.test(target.textContent))
     display.textContent = target.textContent;
-  else if (target.childNodes.length === 1)
+  else if (target.childNodes.length === 1 && hasNumber.test(target.textContent))
     display.textContent += target.textContent;
   firstNumber = display.textContent;
 });
