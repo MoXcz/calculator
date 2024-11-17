@@ -14,6 +14,10 @@ function divide(a, b) {
   return a / b;
 }
 
+function mod(a, b) {
+  return a % b;
+}
+
 let firstNumber = 0,
   operator,
   secondNumber = 0;
@@ -29,6 +33,8 @@ function operate(operator, firstNumber, secondNumber) {
       return multipy(firstNumber, secondNumber);
     case "/":
       return divide(firstNumber, secondNumber);
+    case "%":
+      return mod(firstNumber, secondNumber);
   }
 }
 
@@ -95,6 +101,7 @@ multiplication.addEventListener("click", () => operatorEvent(multiplication));
 const division = document.querySelector(".division");
 division.addEventListener("click", () => operatorEvent(division));
 const remainder = document.querySelector(".remainder");
+remainder.addEventListener("click", () => operatorEvent(remainder));
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
