@@ -17,6 +17,7 @@ function divide(a, b) {
 let firstNumber = 0,
   operator,
   secondNumber = 0;
+const opac = 0.5;
 
 function operate(operator, firstNumber, secondNumber) {
   switch (operator) {
@@ -36,43 +37,39 @@ const numbers = document.querySelectorAll(".number");
 
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
-    if (display.textContent == "0") display.textContent = number.textContent;
-    else display.textContent += number.textContent;
+    if (display.textContent == "0" || addition.style.opacity == opac) {
+      display.textContent = number.textContent;
+      addition.style.opacity = 1;
+    } else display.textContent += number.textContent;
   });
 });
 
-const clear = document.querySelector(".clear");
 function clearDisplayContents() {
-  display.textContent = "0";
   firstNumber = 0;
   operator = 0;
   secondNumber = 0;
+  addition.style.opacity = 1;
 }
 
-clear.addEventListener("click", clearDisplayContents);
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", () => {
+  display.textContent = "0";
+  clearDisplayContents();
+});
 
 const addition = document.querySelector(".addition");
-
-function displayOperator(symbol) {
-  if (firstNumber != 0) secondNumber = display.textContent;
-  if (secondNumber != 0) {
-    display.textContent = operate(symbol, firstNumber, secondNumber);
-    firstNumber = operate(symbol, firstNumber, secondNumber);
-  } else {
-    firstNumber = display.textContent;
-    operator = symbol;
-    display.textContent = symbol;
-  }
-}
-
-addition.addEventListener("click", (event) => {
-  displayOperator(event.target.textContent);
+addition.addEventListener("click", () => {
+  if (firstNumber != 0)
+    display.textContent = operate("+", firstNumber, display.textContent);
+  firstNumber = display.textContent;
+  operator = "+";
+  addition.style.opacity = opac;
 });
 
 const equal = document.querySelector(".equal");
-
 equal.addEventListener("click", () => {
   secondNumber = display.textContent;
   if (!isNaN(+firstNumber + +secondNumber))
     display.textContent = operate(operator, firstNumber, secondNumber);
+  clearDisplayContents();
 });
