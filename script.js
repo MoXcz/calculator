@@ -16,7 +16,7 @@ function divide(a, b) {
 
 let firstNumber = 0,
   operator,
-  secondNumber;
+  secondNumber = 0;
 
 function operate(operator, firstNumber, secondNumber) {
   switch (operator) {
@@ -51,7 +51,6 @@ buttons.addEventListener("click", (event) => {
     display.textContent = target.textContent;
   else if (target.childNodes.length === 1 && hasNumber.test(target.textContent))
     display.textContent += target.textContent;
-  firstNumber = display.textContent;
 });
 
 const clear = document.querySelector(".clear");
@@ -63,3 +62,15 @@ function clearDisplayContents() {
 }
 
 clear.addEventListener("click", clearDisplayContents);
+
+const addition = document.querySelector(".addition");
+
+addition.addEventListener("click", () => {
+  if (secondNumber != 0) {
+    display.textContent = operate("+", firstNumber, secondNumber);
+    return;
+  }
+  firstNumber = display.textContent;
+  operator = "+";
+  display.textContent = "+";
+});
