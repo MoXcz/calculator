@@ -10,9 +10,46 @@ html {
   padding: 0;
 }
 
-.container > *,
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.container > * {
   border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
+  width: 375px;
+}
+
+.display {
+  text-align: right;
+  padding: 12px 25px;
+  background-color: lightgrey;
+  font-size: 1.2em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  gap: 4px;
+  align-items: center;
+  background-color: black;
+  padding: 10px 0;
+}
+
+button {
+  width: 75px;
+  height: 75px;
+  background-color: orange;
+  border: none;
+  border-radius: 12px;
+  font-size: 1em;
+}
+
+button:active {
+  background-color: orange;
+  opacity: 0.9;
 }
