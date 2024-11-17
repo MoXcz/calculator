@@ -26,15 +26,14 @@ const opac = 0.5;
 function operate(operator, firstNumber, secondNumber) {
   switch (operator) {
     case "+":
-      return add(firstNumber, secondNumber);
+      return (add(firstNumber, secondNumber) * 100).toFixed() / 100;
     case "-":
-      return subtract(firstNumber, secondNumber);
+      return (subtract(firstNumber, secondNumber) * 100).toFixed() / 100;
     case "*":
-      return multipy(firstNumber, secondNumber);
+      return (multipy(firstNumber, secondNumber) * 100).toFixed() / 100;
     case "/":
-      return divide(firstNumber, secondNumber);
     case "%":
-      return mod(firstNumber, secondNumber);
+      return (mod(firstNumber, secondNumber) * 100).toFixed() / 100;
   }
 }
 
@@ -109,4 +108,9 @@ equal.addEventListener("click", () => {
   if (!isNaN(+firstNumber + +secondNumber))
     display.textContent = operate(operator, firstNumber, secondNumber);
   clearDisplayContents();
+});
+
+const del = document.querySelector(".delete");
+del.addEventListener("click", () => {
+  display.textContent = display.textContent.slice(0, -1);
 });
