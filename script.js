@@ -57,14 +57,16 @@ clear.addEventListener("click", () => {
   clearDisplayContents();
 });
 
-const addition = document.querySelector(".addition");
-addition.addEventListener("click", () => {
+function operatorEvent(target) {
   if (firstNumber != 0)
     display.textContent = operate("+", firstNumber, display.textContent);
   firstNumber = display.textContent;
-  operator = "+";
-  addition.style.opacity = opac;
-});
+  operator = target.textContent;
+  target.style.opacity = opac;
+}
+
+const addition = document.querySelector(".addition");
+addition.addEventListener("click", () => operatorEvent(addition));
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
