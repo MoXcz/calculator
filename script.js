@@ -44,3 +44,13 @@ buttons.addEventListener("click", (event) => {
     display.textContent += target.textContent;
   firstNumber = display.textContent;
 });
+
+const clear = document.querySelector(".clear");
+function clearDisplayContents() {
+  display.textContent = "0";
+  firstNumber = 0;
+  operator = 0;
+  secondNumber = 0;
+}
+
+clear.addEventListener("click", clearDisplayContents);
